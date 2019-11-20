@@ -12,8 +12,10 @@ import java.util.concurrent.Executors;
 
 public class RpcExporter {
 
+    // 线程池
     static Executor executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
 
+    // 绑定endpoint和端口，持续监听
     public static void exporter(String hostName, int port) throws Exception {
         ServerSocket server = new ServerSocket();
         server.bind(new InetSocketAddress(hostName, port));
