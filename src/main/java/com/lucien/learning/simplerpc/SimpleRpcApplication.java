@@ -10,7 +10,7 @@ import java.net.InetSocketAddress;
 public class SimpleRpcApplication {
 
     public static void main(String[] args) {
-        // 1.启动服务提供端
+        // 1. 启动服务提供端
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -22,9 +22,10 @@ public class SimpleRpcApplication {
             }
         }).start();
 
-        // 2.
+        // 2. 客户端构建动态代理累
         LoginService loginService = new RpcImporter<LoginService>().importer(LoginServiceImpl.class,
                 new InetSocketAddress("localhost", 3000));
+        // 3. 调用远程服务并输出结果
         System.out.println(loginService.loginIn("lucien","123123"));
     }
 
